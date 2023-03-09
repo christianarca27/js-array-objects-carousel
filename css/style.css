@@ -29,6 +29,43 @@ h1 {
     position: relative;
 }
 
+#carousel #main-picture #control-start,
+#carousel #main-picture #control-stop,
+#carousel #main-picture #control-change {
+    position: absolute;
+    top: 5%;
+
+    color: white;
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: .3s;
+    transition-timing-function: ease;
+}
+
+#carousel #main-picture #control-start {
+    left: 2%;
+}
+
+#carousel #main-picture #control-stop {
+    left: 2%;
+}
+
+#carousel #main-picture #control-change {
+    left: 7%;
+}
+
+#carousel:hover #main-picture #control-start,
+#carousel:hover #main-picture #control-stop,
+#carousel:hover #main-picture #control-change {
+    opacity: 1;
+}
+
+#carousel #main-picture #control-start:hover,
+#carousel #main-picture #control-stop:hover,
+#carousel #main-picture #control-change:hover {
+    cursor: pointer;
+}
+
 #carousel #main-picture #image {
     height: 100%;
     width: 100%;

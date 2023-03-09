@@ -28,6 +28,22 @@ const mainPictureEl = document.createElement("div");
 mainPictureEl.id = "main-picture";
 carouselEl.append(mainPictureEl);
 
+const controlStartEl = document.createElement("i");
+controlStartEl.id = "control-start";
+controlStartEl.className = "fa-solid fa-circle-play fa-2xl";
+controlStartEl.style.display = "none";
+mainPictureEl.append(controlStartEl);
+
+const controlStopEl = document.createElement("i");
+controlStopEl.id = "control-stop";
+controlStopEl.className = "fa-solid fa-circle-pause fa-2xl";
+mainPictureEl.append(controlStopEl);
+
+const controlChangeEl = document.createElement("i");
+controlChangeEl.id = "control-change";
+controlChangeEl.className = "fa-solid fa-arrows-rotate fa-2xl";
+mainPictureEl.append(controlChangeEl);
+
 const mainPictureImageEl = document.createElement("img");
 mainPictureImageEl.id = "image";
 mainPictureEl.append(mainPictureImageEl);
@@ -75,6 +91,10 @@ console.log(thumbnailsList);
 let actualIndex = 0;
 showImageByIndex(actualIndex);
 
+let isReverseRotation = false;
+let nextImageInterval = setInterval(showNextImage, 3000);
+let isIntervalActive = true;
+
 
 controlPrevEl.addEventListener("click", showPrevImage);
 
@@ -82,7 +102,52 @@ controlPrevEl.addEventListener("click", showPrevImage);
 controlNextEl.addEventListener("click", showNextImage);
 
 
-setInterval(showNextImage, 3000);
+controlStartEl.addEventListener("click", () => {
+    if(!isIntervalActive) {
+        nextImageInterval = setInterval(() => {
+            if(!isReverseRotation) {
+                showNextImage();
+            }
+            else {
+                showPrevImage();
+            }
+        }, 3000);
+        isIntervalActive = true;
+    }
+
+    controlStartEl.style.display = "none";
+    controlStopEl.style.display = "block";
+});
+
+
+controlStopEl.addEventListener("click", () => {
+    if(isIntervalActive){
+        clearInterval(nextImageInterval);
+        isIntervalActive = false;
+    }
+
+    controlStopEl.style.display = "none";
+    controlStartEl.style.display = "block";
+});
+
+
+controlChangeEl.addEventListener("click", () => {
+    isReverseRotation = !isReverseRotation;
+
+    if(isIntervalActive) {
+        clearInterval(nextImageInterval);
+
+        nextImageInterval = setInterval(() => {
+            if(!isReverseRotation) {
+                showNextImage();
+            }
+            else {
+                showPrevImage();
+            }
+        }, 3000);
+        isIntervalActive = true;
+    }
+});
 
 
 
