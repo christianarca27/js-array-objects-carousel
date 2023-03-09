@@ -3,3 +3,131 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.container-centered {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1 {
+    padding: 2rem 0;
+    text-align: center;
+}
+
+#carousel {
+    height: 450px;
+
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+#carousel #main-picture {
+    width: 80%;
+    height: 100%;
+
+    position: relative;
+}
+
+#carousel #main-picture #image {
+    height: 100%;
+    width: 100%;
+    
+    object-fit: cover;
+}
+
+#carousel #main-picture #description {
+    padding: 1.5rem 1.5rem 1.5rem 2.7rem;
+
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    color: white;
+    text-align: right;
+}
+
+#carousel #main-picture #description #title {
+    font-weight: bold;
+    font-size: x-large;
+}
+
+#carousel #main-picture #description #text {
+    font-size: larger;
+    opacity: .8;
+}
+
+#carousel #thumbnails {
+    background-color: darkred;
+    width: 20%;
+    height: 100%;
+
+    position: relative;
+}
+
+#carousel #thumbnails .thumbnail {
+    width: 100%;
+    height: calc(100% / 5);
+
+    position: relative;
+}
+
+#carousel #thumbnails .thumbnail::before {
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    display: block;
+    content: "";
+
+    position: absolute;
+
+    opacity: .6;
+}
+
+#carousel #thumbnails .thumbnail.active {
+    border: 2px solid white;
+}
+
+#carousel #thumbnails .thumbnail.active::before {
+    opacity: 0;
+}
+
+#carousel #thumbnails .thumbnail img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+#carousel #thumbnails i {
+    color: white;
+}
+
+#carousel #thumbnails i:hover {
+    cursor: pointer;
+}
+
+#carousel #thumbnails #control-prev,
+#carousel #thumbnails #control-next {
+    position: absolute;
+    left: 50%;
+
+    transform: translateX(-50%);
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: .3s;
+    transition-timing-function: ease;
+}
+
+#carousel #thumbnails #control-prev {
+    top: 5%;
+}
+
+#carousel #thumbnails #control-next {
+    bottom: 5%;
+}
+
+#carousel:hover #thumbnails #control-prev,
+#carousel:hover #thumbnails #control-next {
+    opacity: 1;
+}
