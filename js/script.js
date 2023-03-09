@@ -76,27 +76,34 @@ let actualIndex = 0;
 showImageByIndex(actualIndex);
 
 
-controlPrevEl.addEventListener("click", () => {
-    actualIndex--;
-    actualIndex += images.length;
-    actualIndex %= images.length;
-
-    showImageByIndex(actualIndex);
-});
+controlPrevEl.addEventListener("click", showPrevImage);
 
 
-controlNextEl.addEventListener("click", () => {
-    actualIndex++;
-    actualIndex %= images.length;
-    
-    showImageByIndex(actualIndex);
-});
+controlNextEl.addEventListener("click", showNextImage);
+
+
+setInterval(showNextImage, 3000);
 
 
 
 
 
 // ------------------- FUNCTIONS ------------------- //
+
+function showPrevImage() {
+    actualIndex--;
+    actualIndex += images.length;
+    actualIndex %= images.length;
+
+    showImageByIndex(actualIndex);
+}
+
+function showNextImage() {
+    actualIndex++;
+    actualIndex %= images.length;
+
+    showImageByIndex(actualIndex);
+}
 
 function showImageByIndex(i) {
     mainPictureImageEl.src = "../" + images[i].image;
