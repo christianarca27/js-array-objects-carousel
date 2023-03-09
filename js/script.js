@@ -78,12 +78,17 @@ showImageByIndex(actualIndex);
 
 controlPrevEl.addEventListener("click", () => {
     actualIndex--;
+    actualIndex += images.length;
+    actualIndex %= images.length;
+
     showImageByIndex(actualIndex);
 });
 
 
 controlNextEl.addEventListener("click", () => {
     actualIndex++;
+    actualIndex %= images.length;
+    
     showImageByIndex(actualIndex);
 });
 
