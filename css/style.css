@@ -67,7 +67,6 @@ h1 {
 
 #carousel #thumbnails .thumbnail {
     width: 100%;
-    height: calc(100% / 5);
 
     position: relative;
 }
@@ -99,19 +98,12 @@ h1 {
     object-fit: cover;
 }
 
-#carousel #thumbnails i {
-    color: white;
-}
-
-#carousel #thumbnails i:hover {
-    cursor: pointer;
-}
-
 #carousel #thumbnails #control-prev,
 #carousel #thumbnails #control-next {
     position: absolute;
     left: 50%;
 
+    color: white;
     transform: translateX(-50%);
     opacity: 0;
     transition-property: opacity;
@@ -130,4 +122,9 @@ h1 {
 #carousel:hover #thumbnails #control-prev,
 #carousel:hover #thumbnails #control-next {
     opacity: 1;
+}
+
+#carousel #thumbnails #control-prev:hover,
+#carousel #thumbnails #control-next:hover {
+    cursor: pointer;
 }
