@@ -137,6 +137,10 @@ h1 {
     object-fit: cover;
 }
 
+#carousel #thumbnails .thumbnail:hover {
+    cursor: pointer;
+}
+
 #carousel #thumbnails #control-prev,
 #carousel #thumbnails #control-next {
     position: absolute;

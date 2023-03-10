@@ -86,6 +86,12 @@ controlNextEl.className = "fa-solid fa-circle-chevron-down fa-2xl";
 thumbnailsEl.append(controlNextEl);
 
 const thumbnailsList = document.querySelectorAll(".thumbnail");
+thumbnailsList.forEach((actualThumbnail, thumbnailIndex) => {
+    actualThumbnail.addEventListener("click", () => {
+        actualIndex = thumbnailIndex;
+        showImageByIndex(actualIndex);
+    });
+});
 
 let actualIndex = 0;
 showImageByIndex(actualIndex);
